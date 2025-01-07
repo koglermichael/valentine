@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentinstagsdate</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www .gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script>
+    // Deine Firebase-Konfiguration hier einfügen
+    const firebaseConfig = {
+          apiKey: "AIzaSyByERba8YagxaMBUVif4_suF0Kzx8qMK18",
+          authDomain: "response-valtine.firebaseapp.com",
+          projectId: "response-valtine",
+          storageBucket: "response-valtine.firebasestorage.app",
+          messagingSenderId: "556016025731",
+          appId: "1:556016025731:web:d16c187e0ecae6b5849bb6"
+        };
+
+    // Firebase initialisieren
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Daten speichern
+    function saveResponse(data) {
+        db.collection("valentine_responses").add(data)
+            .then(() => {
+                console.log("Antwort erfolgreich gespeichert!");
+            })
+            .catch((error) => {
+                console.error("Fehler beim Speichern der Antwort: ", error);
+            });
+    }
+
+    // Beispiel für das Speichern der Daten
+    document.getElementById('dateNextButton').addEventListener('click', function() {
+        const date = document.getElementById('datePicker').value;
+        saveResponse({ date: date });
+        document.getElementById('page3').classList.remove('active');
+        document.getElementById('page4').classList.add('active');
+    });
+
+    document.getElementById('foodNextButton').addEventListener('click', function() {
+        const food = document.getElementById('foodSelect').value;
+        saveResponse({ food: food });
+        document.getElementById('page4').classList.remove('active');
+        document.getElementById('page5').classList.add('active');
+    });
+
+    document.getElementById('dessertNextButton').addEventListener('click', function() {
+        const dessert = document.getElementById('dessertSelect').value;
+        saveResponse({ dessert: dessert });
+        document.getElementById('page5').classList.remove('active');
+        document.getElementById('page6').classList.add('active');
+    });
+
+    document.getElementById('activityNextButton').addEventListener('click', function() {
+        const activity = document.getElementById('activitySelect').value;
+        saveResponse({ activity: activity });
+        document.getElementById('page6').classList.remove('active');
+        document.getElementById('page7').classList.add('active');
+    });
+</script>
+</head>
+<body>
+    <div id="page1" class="page">
+        <h1>Willst du mein Valentinstagsdate sein? ❤️</h1>
+        <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Cute GIF">
+        <div class="buttons">
+            <button id="yesButton">Ja!</button>
+            <button id="noButton">Nein 😢</button>
+        </div>
+    </div>
+
+    <div id="page2" class="page hidden">
+        <h1>Danke! ❤️</h1>
+        <img src="https://media.giphy.com/media/3o7TKsQ8gqVrXhq3m0/giphy.gif" alt="Thank You GIF">
+        <button id="nextButton">Weiter</button>
+    </div>
+
+    <div id="page3" class="page hidden">
+        <h1>Wann soll unser Date sein? 📅</h1>
+        <input type="date" id="datePicker">
+        <button id="dateNextButton">Weiter</button>
+    </div>
+
+    <div id="page4" class="page hidden">
+        <h1>Was möchtest du essen? 🍽️</h1>
+        <select id="foodSelect">
+            <option value="Italienisch">Italienisch 🍕</option>
+            <option value="Afrikanisch">Afrikanisch 🌍</option>
+            <option value="Österreichisch">Österreichisch 🥨</option>
+            <option value="Burger">Burger 🍔</option>
+            <option value="Griechisch">Griechisch 🥙</option>
+            <option value="Indisch">Indisch 🍛</option>
+            <option value="Sushi">Sushi 🍣</option>
+        </select>
+        <button id="foodNextButton">Weiter</button>
+    </div>
+
+    <div id="page5" class="page hidden">
+        <h1>Was möchtest du als Dessert? 🍧</h1>
+        <select id="dessertSelect">
+            <option value="Churros">Churros 🥨</option>
+            <option value="Milkshake">Milkshake 🥤</option>
+            <option value="Bubble Tea">Bubble Tea 🧋</option>
+            <option value="Waffeln">Waffeln 🧇</option>
+            <option value="Eis">Eis 🍦</option>
+            <option value="Kaiserschmarrn">Kaiserschmarrn 🥞</option>
+            <option value="Schokoladenfondue">Schokoladenfondue 🍫</option>
+        </select>
+        <button id="dessertNextButton">Weiter</button>
+    ```html
+    </div>
+
+    <div id="page6" class="page hidden">
+        <h1>Was sollen wir danach machen? 🎉</h1>
+        <select id="activitySelect">
+            <option value="Bowling">Bowling 🎳</option>
+            <option value="Kino">Kino 🎬</option>
+            <option value="Bar">Bar 🍹</option>
+            <option value="Club">Club 💃</option>
+            <option value="Spaziergang">Spaziergang 🌳</option>
+            <option value="Picknick">Picknick 🧺</option>
+        </select>
+        <button id="activityNextButton">Weiter</button>
+    </div>
+
+    <div id="page7" class="page hidden">
+        <h1>Danke, dass du mein Valentinstagsdate bist! ❤️</h1>
+        <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Thank You GIF">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
