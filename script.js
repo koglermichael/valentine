@@ -2,10 +2,26 @@ document.getElementById('yesButton').addEventListener('click', function() {
     document.getElementById('page1').classList.remove('active');
     document.getElementById('page2').classList.add('active');
 });
-
+let i = 0;
 document.getElementById('noButton').addEventListener('click', function() {
     const noButton = document.getElementById('noButton');
-    noButton.style.transform = 'translateX(20px)';
+    
+    if (i==0) {
+        noButton.style.transform = 'translateX(20px)';
+        i++;
+    } if (i==1) {
+        noButton.style.transform = 'translateY(20px)';
+        i++;
+        
+    } if (i==2) {
+        noButton.style.transform = 'translateX(20px)';
+        i++;
+        
+    } else {
+        noButton.style.transform = 'translateY(20px)';
+        i=0;
+        
+    }
 });
 
 document.getElementById('nextButton').addEventListener('click', function() {
@@ -21,21 +37,21 @@ document.getElementById('dateNextButton').addEventListener('click', function() {
 });
 
 document.getElementById('foodNextButton').addEventListener('click', function() {
-    const food = document.getElementById('foodSelect').value;
+    //const food = document.getElementById('foodSelect').value;
     // Save food choice to Firebase here
     document.getElementById('page4').classList.remove('active');
     document.getElementById('page5').classList.add('active');
 });
 
 document.getElementById('dessertNextButton').addEventListener('click', function() {
-    const dessert = document.getElementById('dessertSelect').value;
+    // const dessert = document.getElementById('dessertSelect').value;
     // Save dessert choice to Firebase here
     document.getElementById('page5').classList.remove('active');
     document.getElementById('page6').classList.add('active');
 });
 
 document.getElementById('activityNextButton').addEventListener('click', function() {
-    const activity = document.getElementById('activitySelect').value;
+    // const activity = document.getElementById('activitySelect').value;
     // Save activity choice to Firebase here
     document.getElementById('page6').classList.remove('active');
     document.getElementById('page7').classList.add('active');

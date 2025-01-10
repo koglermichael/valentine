@@ -5,69 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentinstagsdate</title>
     <link rel="stylesheet" href="styles.css">
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www .gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-<script>
-    // Deine Firebase-Konfiguration hier einfügen
-    const firebaseConfig = {
-          apiKey: "AIzaSyByERba8YagxaMBUVif4_suF0Kzx8qMK18",
-          authDomain: "response-valtine.firebaseapp.com",
-          projectId: "response-valtine",
-          storageBucket: "response-valtine.firebasestorage.app",
-          messagingSenderId: "556016025731",
-          appId: "1:556016025731:web:d16c187e0ecae6b5849bb6"
-        };
-
-    // Firebase initialisieren
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    // Daten speichern
-    function saveResponse(data) {
-        db.collection("valentine_responses").add(data)
-            .then(() => {
-                console.log("Antwort erfolgreich gespeichert!");
-            })
-            .catch((error) => {
-                console.error("Fehler beim Speichern der Antwort: ", error);
-            });
-    }
-
-    // Beispiel für das Speichern der Daten
-    document.getElementById('dateNextButton').addEventListener('click', function() {
-        const date = document.getElementById('datePicker').value;
-        saveResponse({ date: date });
-        document.getElementById('page3').classList.remove('active');
-        document.getElementById('page4').classList.add('active');
-    });
-
-    document.getElementById('foodNextButton').addEventListener('click', function() {
-        const food = document.getElementById('foodSelect').value;
-        saveResponse({ food: food });
-        document.getElementById('page4').classList.remove('active');
-        document.getElementById('page5').classList.add('active');
-    });
-
-    document.getElementById('dessertNextButton').addEventListener('click', function() {
-        const dessert = document.getElementById('dessertSelect').value;
-        saveResponse({ dessert: dessert });
-        document.getElementById('page5').classList.remove('active');
-        document.getElementById('page6').classList.add('active');
-    });
-
-    document.getElementById('activityNextButton').addEventListener('click', function() {
-        const activity = document.getElementById('activitySelect').value;
-        saveResponse({ activity: activity });
-        document.getElementById('page6').classList.remove('active');
-        document.getElementById('page7').classList.add('active');
-    });
-</script>
 </head>
 <body>
     <div id="page1" class="page">
         <h1>Willst du mein Valentinstagsdate sein? ❤️</h1>
-        <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Cute GIF">
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmsxbGVwcjA5OGh3eWs0OW8yZTI3YjhwMHl1NHMzb2d3MXl5bjZ6cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKoWXm3okO1kgHC/giphy.webp" alt="Cute GIF">
         <div class="buttons">
             <button id="yesButton">Ja!</button>
             <button id="noButton">Nein 😢</button>
@@ -76,61 +18,122 @@
 
     <div id="page2" class="page hidden">
         <h1>Danke! ❤️</h1>
-        <img src="https://media.giphy.com/media/3o7TKsQ8gqVrXhq3m0/giphy.gif" alt="Thank You GIF">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDQxazRjanl1dm55bDNjaWhlNHJ1OWZsb2ZtZmFyZTRnY2hnMGVhbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8nTOZX4rgDpQboBGJZ/giphy.webp" alt="Thank You GIF">
         <button id="nextButton">Weiter</button>
     </div>
 
     <div id="page3" class="page hidden">
         <h1>Wann soll unser Date sein? 📅</h1>
-        <input type="date" id="datePicker">
+        <input type="date" value="2025-02-14" id="datePicker">
         <button id="dateNextButton">Weiter</button>
     </div>
 
     <div id="page4" class="page hidden">
         <h1>Was möchtest du essen? 🍽️</h1>
-        <select id="foodSelect">
-            <option value="Italienisch">Italienisch 🍕</option>
-            <option value="Afrikanisch">Afrikanisch 🌍</option>
-            <option value="Österreichisch">Österreichisch 🥨</option>
-            <option value="Burger">Burger 🍔</option>
-            <option value="Griechisch">Griechisch 🥙</option>
-            <option value="Indisch">Indisch 🍛</option>
-            <option value="Sushi">Sushi 🍣</option>
-        </select>
+        <div class="options-grid">
+            <label class="option-item">
+                <input type="radio" name="food" value="Italienisch">
+                <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Italienisch">
+                <span>Italienisch 🍕</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="food" value="Afrikanisch">
+                <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Afrikanisch">
+                <span>Afrikanisch 🌍</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="food" value="Österreichisch">
+                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Österreichisch">
+                <span>Österreichisch 🥨</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="food" value="Burger">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Burger">
+                <span>Burger 🍔</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="food" value="Griechisch">
+                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Griechisch">
+                <span>Griechisch 🥙</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="food" value="Indisch">
+                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Indisch">
+                <span>Indisch 🍛</span>
+            </label>
+        </div>
         <button id="foodNextButton">Weiter</button>
     </div>
 
     <div id="page5" class="page hidden">
         <h1>Was möchtest du als Dessert? 🍧</h1>
-        <select id="dessertSelect">
-            <option value="Churros">Churros 🥨</option>
-            <option value="Milkshake">Milkshake 🥤</option>
-            <option value="Bubble Tea">Bubble Tea 🧋</option>
-            <option value="Waffeln">Waffeln 🧇</option>
-            <option value="Eis">Eis 🍦</option>
-            <option value="Kaiserschmarrn">Kaiserschmarrn 🥞</option>
-            <option value="Schokoladenfondue">Schokoladenfondue 🍫</option>
-        </select>
+        <div class="options-grid">
+            <label class="option-item">
+                <input type="radio" name="dessert" value="Churros">
+                <img src="https://plus.unsplash.com/premium_photo-1713687794966-caff63572085?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Churros">
+                <span>Churros 🥨</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="dessert" value="Milkshake">
+                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Milkshake">
+                <span>Milkshake 🥤</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="dessert" value="Bubble Tea">
+                <img src="https://plus.unsplash.com/premium_photo-1661333506045-aa5cfdb0d8c6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bubble Tea">
+                <span>Bubble Tea 🧋</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="dessert" value="Waffeln">
+                <img src="https://images.unsplash.com/photo-1558584724-0e4d32ca55a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Waffeln">
+                <span>Waffeln 🧇</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="dessert" value="Eis">
+                <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Eis">
+                <span>Eis 🍦</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="dessert" value="Kaiserschmarrn">
+                <img src="https://plus.unsplash.com/premium_photo-1693879090564-4617efcd0f0b?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kaiserschmarrn">
+                <span>Kaiserschmarrn 🍰</span>
+            </label>
+        </div>
         <button id="dessertNextButton">Weiter</button>
-    ```html
     </div>
 
     <div id="page6" class="page hidden">
         <h1>Was sollen wir danach machen? 🎉</h1>
-        <select id="activitySelect">
-            <option value="Bowling">Bowling 🎳</option>
-            <option value="Kino">Kino 🎬</option>
-            <option value="Bar">Bar 🍹</option>
-            <option value="Club">Club 💃</option>
-            <option value="Spaziergang">Spaziergang 🌳</option>
-            <option value="Picknick">Picknick 🧺</option>
-        </select>
+
+        <div class="options-grid">
+            <!-- Aktivitäten -->
+            <label class="option-item">
+                <input type="radio" name="activity" value="Bowling">
+                <img src="https://plus.unsplash.com/premium_photo-1679321795564-f73ec1c21fcd?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bowling">
+                <span>Bowling 🎳</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="activity" value="Kino">
+                <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Kino">
+                <span>Kino 🎬</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="activity" value="Bar">
+                <img src="https://images.unsplash.com/photo-1509669803555-fd5edd8d5a41?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bar">
+                <span>Bar 🍹</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="activity" value="Club">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Club">
+                <span>Club 💃</span>
+            </label>
+        </div>
         <button id="activityNextButton">Weiter</button>
     </div>
 
     <div id="page7" class="page hidden">
         <h1>Danke, dass du mein Valentinstagsdate bist! ❤️</h1>
-        <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Thank You GIF">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnF5eXVidnJiZ3RsZnNsd21kZDc5OWRmanVmZzBocnk3cWdxYmRhdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4Ki4biBSwhjyrS48/giphy.webp" alt="Thank You GIF">
     </div>
 
     <script src="script.js"></script>
